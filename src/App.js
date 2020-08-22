@@ -15,17 +15,38 @@ var color = {
 
 function App() {
 
-  const friends = ['Anis', 'Mokles', 'tarikul', 'Md. Abdul Motin', 'ratul']
-  const proffession = {
-    web : "React Developer",
-    android: 'react native',
+  const friends = ['Anis', 'Mokles', 'tarikul', 'Md. Abdul Motin', 'ratul', 'Rashedul']
+  const proffession = [
+    {
+      name: 'Md. MObin',
+     pro:'Web Developer',
+     salary: '$5000'
+    },
+    {
+      name: 'Md. Tarek',
+     pro:'Android Developer',
+     salary: '$4000'
+  },
+    {
+      name: 'Md. Reyad ', 
+    pro:'FrondEnd Developer',
+    salary: '$8000'
   }
+]
+
+  
   return (
     <div className="App">
       <header className="App-header">
-        <Person name={friends[0]} pro={friends[3]}></Person>
-        <Person name={friends[4]} pro={friends[2]}></Person>
-        <Person name={friends[3]} pro={proffession.android} ></Person>
+       
+        
+       
+          {
+            proffession.map(
+            profList => <Person prof={profList}></Person>
+            )
+          }
+      
       </header>    
     </div>
   );
@@ -36,10 +57,14 @@ function Person(props){
     border:'1px solid gold',
     margin:'10px',
   }
+  const {name, pro, salary} =  props.prof
+  {/*console.log(name, pro, salary);*/}
   return (
     <div style={styleData}>
-      <h1>{props.name }</h1>
-      <p> {props.pro}</p>
+          <h1>{name}</h1>
+          <h1>{pro}</h1>
+          <h1>{salary}</h1>
+      
     </div>
   )
 }
