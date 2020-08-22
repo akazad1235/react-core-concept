@@ -1,17 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-var person = {
-    name:'ak azad',
-    age:25,
-    dept: 'cse'
-
-}
-var color = {
-    color:'red',
-    backgroundColor:'blue'
-}
 
 function App() {
 
@@ -46,7 +35,7 @@ function App() {
             profList => <Person prof={profList}></Person>
             )
           }
-      
+      <Counter></Counter>
       </header>    
     </div>
   );
@@ -67,6 +56,25 @@ function Person(props){
       
     </div>
   )
+}
+
+
+function Counter(){
+   const [count, setCount] = useState(10)
+
+   const buttonHandle = () =>{
+     const newCount = count+1
+     setCount(newCount)
+   }
+
+   return (
+     <div>
+       <p>Count: {count} </p>
+       <button onClick={buttonHandle}>add</button>
+       <button onClick={()=>setCount(count-1)}>sub</button>
+     </div>
+   )
+
 }
 
 export default App;
