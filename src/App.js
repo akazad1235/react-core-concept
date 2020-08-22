@@ -14,39 +14,34 @@ var color = {
 }
 
 function App() {
+
+  const friends = ['Anis', 'Mokles', 'tarikul', 'Md. Abdul Motin', 'ratul']
+  const proffession = {
+    web : "React Developer",
+    android: 'react native',
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         react app 
-        </a>
-          
-      </header>
-          <Person></Person>
-          <Person></Person>
-          <Person></Person>
+        <Person name={friends[0]} pro={friends[3]}></Person>
+        <Person name={friends[4]} pro={friends[2]}></Person>
+        <Person name={friends[3]} pro={proffession.android} ></Person>
+      </header>    
     </div>
   );
 }
 
-function Person(){
-  return(
-    <div style={{border:'1px solid #ddd', margin:'5px'}}>
-      <h1>Name: shakib Al Hasan</h1>
-    <p>this my pasion</p>
+function Person(props){
+  let styleData = {
+    border:'1px solid gold',
+    margin:'10px',
+  }
+  return (
+    <div style={styleData}>
+      <h1>{props.name }</h1>
+      <p> {props.pro}</p>
     </div>
-
-    
-  ) 
+  )
 }
 
 export default App;
