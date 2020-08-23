@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -36,6 +36,7 @@ function App() {
             )
           }
       <Counter></Counter>
+      <Example></Example>
       </header>    
     </div>
   );
@@ -75,6 +76,31 @@ function Counter(){
      </div>
    )
 
+}
+
+
+function Example() {
+  const [users, setUsers] = useState([]);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+   fetch('https://jsonplaceholder.typicode.com/users')
+   .then(res => res.json())
+   .then(data => setUsers(data))
+  }, []);
+
+  return (
+    <div>
+      <h1>Dynamic Users:{users.length} </h1>
+      <ul>
+      {
+        users.map(user => <li>{user.address.zipcode}</li>)
+      }
+      </ul>
+      
+    </div>
+  );
 }
 
 export default App;
